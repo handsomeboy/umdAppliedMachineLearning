@@ -6,13 +6,12 @@ import subprocess
 import hashlib
 import time
 
-tempFiles=os.listdir()
 files=[]
 
 #removes pycache files and this file and nonpython files that may have snuck in
-for i in range(len(tempFiles)):
-	if tempFiles[i][0] != '_' and tempFiles[i][-3:-1]=='.py':
-		files.append(tempFiles[i])
+for f in os.listdir():
+	if f[0] != '_' and f.endswith('.py'):
+		files.append(f)
 
 problemOne=pd.DataFrame(columns=['UID','accuracy','time'])
 problemTwo=pd.DataFrame(columns=['UID','accuracy','time'])
@@ -29,14 +28,14 @@ def sha256_checksum(filename, block_size=65536):
     return sha256.hexdigest()
 
 hashes=[]
-for i in [0,1,2,3]:
+for i in range(4):
 	hashes[i]=sha256_checksum(dataFileNames[i])
 
 def changedFiles():
 	newHashes=[]
-	for i in [0,1,2,3]:
+	for i in range(4):
 		newHashes[i]=sha256_checksum(dataFileNames[i])
-	for i in [0,1,2,3]:
+	for i in range(4):
 		if newHashes[i]!=hashes[i]:
 			return True
 	return False
@@ -71,4 +70,3 @@ for i in range(len(files)):
 	else:
 		print('ran '+file+'. '+str(100*i/len(files))+'$ complete')
 
-#timing execution 
