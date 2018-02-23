@@ -41,32 +41,43 @@ def changedFiles():
 	return False
 start=0
 end=0
-for i in range(len(files)):
-	if files[i][-5]!='_':
+
+#things to add:
+#bash calls need to be cleaned up much more and need to handle python errors
+#cutoff after certain runtime
+
+for i, file in enumerate(files):
+	if file[-5]!='_':
 		print(file+' has an irregular naming scheme based on missing underscore')
-	elif files[i][-4]!='1' and files[i][-3]!='2' and files[i][-3]!='3':
-		print(file+' has an irregular naming scheme based on last digit')
-	elif files[i][-4]=='1':
+	elif len(file)>14:
+		print(file+' has a file name longer than it should be')
+	elif len(file)<14:
+		print(file+ 'has a file name shorter than it should be')
+	elif not file[0,8].isdigit():
+		print(file+ ' has a UID comprised of values other than numbers')
+	elif file.endswith('1.py'):
 		start=time.time()
-		output=subprocess.run(['python3',files[i],dataFileNames[0]], stdout=subprocess.PIPE)
+		output=subprocess.run(['python3',file,dataFileNames[0]], stdout=subprocess.PIPE)
 		end=time.time()
-		problemOne.loc[i]=[files[i][0:-6],output.stdout.decode('utf-8')[0:-2],str(end-start)] #-2 to remove \n, -6 to remove _n.py
+		problemOne.loc[i]=[file[0:-6],output.stdout.decode('utf-8')[0:-2],str(end-start)] #-2 to remove \n, -6 to remove _n.py
 		problemOne.to_csv('problemOne.csv', encoding='utf-8')		
-	elif files[i][-4]=='2':
+	elif file.endswith('2.py'):
 		start=time.time()
-		output=subprocess.run(['python3',files[i],dataFileNames[1]], stdout=subprocess.PIPE)
+		output=subprocess.run(['python3',file,dataFileNames[1]], stdout=subprocess.PIPE)
 		end=time.time()
-		problemTwo.loc[i]=[files[i][0:-6],output.stdout.decode('utf-8')[0:-2],str(end-start)]
+		problemTwo.loc[i]=[file[0:-6],output.stdout.decode('utf-8')[0:-2],str(end-start)]
 		problemTwo.to_csv('problemTwo.csv', encoding='utf-8')
-	elif files[i][-4]=='3':
+	elif file.endswith('3.py'):
 		start=time.time()
-		output=subprocess.run(['python3',files[i],dataFileNames[2],dataFileNames[3]], stdout=subprocess.PIPE)
+		output=subprocess.run(['python3',file,dataFileNames[2],dataFileNames[3]], stdout=subprocess.PIPE)
 		end=time.time()
-		problemThree.loc[i]=[files[i][0:-6],output.stdout.decode('utf-8')[0:-2],str(end-start)]
+		problemThree.loc[i]=[file[0:-6],output.stdout.decode('utf-8')[0:-2],str(end-start)]
 		problemThree.to_csv('problemThree.csv', encoding='utf-8')
+	else:
+		print(file+' has an irregular naming scheme based on last digit')
+
 	if not changedFiles():
 		print(file+' edited a local file')
 		break
 	else:
 		print('ran '+file+'. '+str(100*i/len(files))+'% complete')
-
