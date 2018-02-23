@@ -68,5 +68,5 @@ for i in range(len(files)):
 		print(file+' edited a local file')
 		break
 	else:
-		print('ran '+file+'. '+str(100*i/len(files))+'$ complete')
+		print('ran '+file+'. '+str(100*i/len(files))+'% complete')
 
