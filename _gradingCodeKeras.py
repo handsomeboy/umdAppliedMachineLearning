@@ -13,11 +13,11 @@ for f in os.listdir():
     if f[0] != '_' and f.endswith('.py'):
         files.append(f)
 
-problemOne=pd.DataFrame(columns=['UID','accuracy','time'])
-problemTwo=pd.DataFrame(columns=['UID','accuracy','time'])
-problemThree=pd.DataFrame(columns=['UID','accuracy','time'])
+problemOne=pd.DataFrame(columns=['Directory_ID','accuracy','time'])
+problemTwo=pd.DataFrame(columns=['Directory_ID','accuracy','time'])
+problemThree=pd.DataFrame(columns=['Directory_ID','accuracy','time'])
 
-dataFileNames=['breast-cancer-wisconsin.data','bezdekIris.data','test_images_mnist.csv', 'test_labels_mnist.csv']
+dataFileNames=['breast-cancer-wisconsin.data','bezdekIris.data','train_images_mnist.csv', 'train_labels_mnist.csv']
 
 #makes sure someone hasn't figured out how to edit the source files
 def sha256_checksum(filename, block_size=65536):
@@ -49,12 +49,6 @@ end=0
 for i, file in enumerate(files):
     if file[-5]!='_':
         print(file+' has an irregular naming scheme based on missing underscore')
-    elif len(file)>14:
-        print(file+' has a file name longer than it should be')
-    elif len(file)<14:
-        print(file+ 'has a file name shorter than it should be')
-    elif not file[0,8].isdigit():
-        print(file+ ' has a UID comprised of values other than numbers')
     elif file.endswith('1.py'):
         start=time.time()
         output=subprocess.run(['python3',file,dataFileNames[0]], stdout=subprocess.PIPE)
