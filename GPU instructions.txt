@@ -1,0 +1,12 @@
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install ubuntu-devices-common
+sudo ubuntu-drivers autoinstall
+sudo reboot
+
+<do https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal>
+
+<do https://developer.nvidia.com/rdp/cudnn-download>
+
+note you want CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow, and that you can't wget cuDNN to the cloud due to crazy DRM restrictions
