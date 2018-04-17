@@ -18,6 +18,7 @@ The .deb file you download for CUDA has to be renamed from -deb to .deb for some
 Other things you may want to run:
 sudo apt install python3
 sudo apt install python3-pip
+sudo pip3 install --upgrade pip
 sudo pip3 install tensorflow
 sudo pip3 install keras
 sudo pip3 install opencv-python
