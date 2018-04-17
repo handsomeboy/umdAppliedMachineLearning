@@ -19,6 +19,7 @@ https://developer.nvidia.com/rdp/cudnn-download
 Download CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow (it's in the archived versions list), both the run time and the developer version. Note that you can't wget either to a server to crazy DRM restrictions.
 Install both by running sudo dpkg -i <fileName>, starting with the runtime.
 
+verify usage by running nvidia-smi in a seperate terminal
 
 Other things you may want to run:
 sudo apt install python3
