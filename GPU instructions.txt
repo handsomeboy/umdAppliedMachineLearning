@@ -12,3 +12,15 @@ sudo reboot
 note you want CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow, and that you can't wget cuDNN to the cloud due to crazy DRM restrictions
 
 The .deb file you download for CUDA has to be renamed from -deb to .deb for some reason.
+
+
+
+Other things you may want to run:
+sudo apt install python3
+sudo apt install python3-pip
+sudo pip3 install tensorflow
+sudo pip3 install keras
+sudo pip3 install opencv-python
+sudo pip3 install pandas
+sudo pip3 install scikit-image
+sudo pip3 install scikit-learn
