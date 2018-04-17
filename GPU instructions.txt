@@ -5,13 +5,14 @@ sudo apt install ubuntu-drivers-common
 sudo ubuntu-drivers autoinstall
 sudo reboot
 
-<do https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal>
+do what this says:
+https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal>
+Note the .deb file you download for CUDA has to be renamed from -deb to .deb for some reason (mv name1 name2)
 
-<do https://developer.nvidia.com/rdp/cudnn-download>
+do what this says:
+https://developer.nvidia.com/rdp/cudnn-download>
+Note you want CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow, and that you can't wget cuDNN to the cloud due to crazy DRM restrictions
 
-note you want CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow, and that you can't wget cuDNN to the cloud due to crazy DRM restrictions
-
-The .deb file you download for CUDA has to be renamed from -deb to .deb for some reason.
 
 
 
