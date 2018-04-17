@@ -19,7 +19,7 @@ Other things you may want to run:
 sudo apt install python3
 sudo apt install python3-pip
 sudo pip3 install --upgrade pip
-sudo pip3 install tensorflow
+sudo pip3 install tensorflow-gpu
 sudo pip3 install keras
 sudo pip3 install opencv-python
 sudo pip3 install pandas
