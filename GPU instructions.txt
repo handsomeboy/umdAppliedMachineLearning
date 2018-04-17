@@ -14,9 +14,10 @@ Note the .deb file you download for CUDA has to be renamed from -deb to .deb for
 
 sudo apt install nvidia-cuda-toolkit
 
-do what this says:
+Go here:
 https://developer.nvidia.com/rdp/cudnn-download
-Note you want CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow (it's in the archived versions list), and that you can't wget cuDNN to a server to crazy DRM restrictions
+Download CUDA 9.0 and cuDNN 7.0.5 for the current release of TensorFlow (it's in the archived versions list), both the run time and the developer version. Note that you can't wget either to a server to crazy DRM restrictions.
+Install both by running sudo dpkg -i <fileName>, starting with the runtime.
 
 
 Other things you may want to run:
